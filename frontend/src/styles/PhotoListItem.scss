@@ -23,6 +23,11 @@
   object-fit: cover;
 }
 
+.photo-list__user-profile-container {
+  display: flex;
+  align-items: center;
+}
+
 .photo-list__user-profile {
   object-fit: cover;
   border-radius: 100%;
@@ -34,6 +39,7 @@
 
 .photo-list__user-details {
   display: flex;
+  flex-direction: column;
 }
 
 .photo-list__user-info {
