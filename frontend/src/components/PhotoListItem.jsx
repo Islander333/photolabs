@@ -8,7 +8,7 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
   /* Insert React */
   return (
-   <div key={props.photo.id} className="photo-list__item">
+   <div className="photo-list__item">
   
   {/* Post image */}
     <img src={props.photo.imageSource} className="photo-list__image"/>
@@ -16,6 +16,7 @@ const PhotoListItem = (props) => {
   {/* Profile Container */}
     
       <div className="photo-list__user-profile-container">
+        
       <img src={props.photo.profile} className="photo-list__user-profile" />
       <div className="photo-list__user-details">
         <div className="photo-list__user-info">{props.photo.username}</div>
