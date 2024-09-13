@@ -6,6 +6,7 @@ import './App.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 import TopicListItem from 'components/TopicListItem';
 import TopicList from 'components/TopicList';
+import TopNavigation from 'components/TopNavigationBar';
 
 
 
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
 
-      <TopicList />
+      <TopNavigation />
 
       <PhotoList />
 
