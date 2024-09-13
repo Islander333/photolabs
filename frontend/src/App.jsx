@@ -4,6 +4,8 @@ import PhotoList from 'components/PhotoList';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
+import TopicListItem from 'components/TopicListItem';
+import TopicList from 'components/TopicList';
 
 
 
@@ -16,9 +18,7 @@ const App = () => {
   return (
     <div className="App">
 
-      { /* {photos.map((photo, index) => (
-            <PhotoListItem key={index} photo={photo}/>
-      ))} */ }
+      <TopicList />
 
       <PhotoList />
 
