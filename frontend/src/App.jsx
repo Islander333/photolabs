@@ -1,10 +1,8 @@
 import React from 'react';
-
-import PhotoList from 'components/PhotoList';
 import './App.scss';
-import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'components/HomeRoute';
-
+import photos from 'mocks/photos';
+import topics from 'mocks/topics';
 
 
 
@@ -16,7 +14,7 @@ const App = () => {
   return (
     <div className="App">
 
-      <HomeRoute />
+      <HomeRoute photos={photos} topics={topics} />
 
     </div>
   );
