@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
 
@@ -9,14 +10,20 @@ const PhotoListItem = (props) => {
   /* Insert React */
   return (
    <div className="photo-list__item">
-  
-  {/* Post image */}
+
+
+  {/* Img container with fav button */}
+  <div className="photo-list__image-container">
+    {/* Post image */}
+    <PhotoFavButton/>
     <img src={props.photo.imageSource} className="photo-list__image"/>
+    
+  </div>
+  
 
   {/* Profile Container */}
-    
       <div className="photo-list__user-profile-container">
-        
+
       <img src={props.photo.profile} className="photo-list__user-profile" />
       <div className="photo-list__user-details">
         <div className="photo-list__user-info">{props.photo.username}</div>
@@ -25,9 +32,7 @@ const PhotoListItem = (props) => {
 
       </div>
 
-     
 
-    
    </div>
   );
 
