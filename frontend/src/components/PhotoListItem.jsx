@@ -6,10 +6,12 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = ({ photo, toggleFavorite, isFavorited }) => {
-  /* Insert React */
+const PhotoListItem = ({ photo, toggleFavorite, isFavorited, toggleModal }) => {
+  
+  
+
   return (
-   <div className="photo-list__item">
+   <div className="photo-list__item" onClick={toggleModal}>
 
 
   {/* Img container with fav button */}

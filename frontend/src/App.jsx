@@ -3,6 +3,7 @@ import './App.scss';
 import HomeRoute from 'components/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 
 
@@ -21,6 +22,16 @@ const App = () => {
   });
  }
 
+
+ //state to track the modal
+ const [isModalOpen, setIsModalOpen] = useState(false);
+
+ //function to toggle the modal
+ const toggleModal = () => {
+  console.log('toggle Modal')
+  setIsModalOpen(prev => !prev);
+ }
+
   return (
     <div className="App">
 
@@ -28,7 +39,12 @@ const App = () => {
        photos={photos}
         topics={topics}
         toggleFavorite={toggleFavorite}
-        favoritedPhotos={favoritedPhotos} />
+        favoritedPhotos={favoritedPhotos}
+        toggleModal={toggleModal} />
+
+        {isModalOpen && 
+        (<PhotoDetailsModal toggleModal={toggleModal} />)
+        }
 
     </div>
   );
