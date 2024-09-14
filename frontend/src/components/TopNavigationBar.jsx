@@ -4,7 +4,7 @@ import '../styles/TopNavigationBar.scss'
 import FavBadge from './FavBadge';
 import TopicList from './TopicList';
 
-const TopNavigation = ({ topics }) => {
+const TopNavigation = ({ topics, favoritedPhotos }) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
@@ -13,7 +13,7 @@ const TopNavigation = ({ topics }) => {
       <TopicList topics={topics} />
 
       {/* Fav Badge */}
-      <FavBadge />
+      <FavBadge favoritedCount={favoritedPhotos.length}/>
 
     </div>
   );

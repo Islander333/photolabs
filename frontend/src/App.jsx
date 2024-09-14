@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'components/HomeRoute';
 import photos from 'mocks/photos';
@@ -6,15 +6,29 @@ import topics from 'mocks/topics';
 
 
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  //const photos = new Array(3).fill(sampleDataForPhotoListItem);
+  //state to track favorited photos
+ const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+
+ //function to toggle favorited photos
+ const toggleFavorite = (photoId) => {
+  setFavoritedPhotos((prevFavorites) => {
+    if (prevFavorites.includes(photoId)) {
+      return prevFavorites.filter(id => id !== photoId)
+    }
+    return [...prevFavorites, photoId];
+  });
+ }
 
   return (
     <div className="App">
 
-      <HomeRoute photos={photos} topics={topics} />
+      <HomeRoute
+       photos={photos}
+        topics={topics}
+        toggleFavorite={toggleFavorite}
+        favoritedPhotos={favoritedPhotos} />
 
     </div>
   );
