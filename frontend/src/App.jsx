@@ -25,11 +25,17 @@ const App = () => {
 
  //state to track the modal
  const [isModalOpen, setIsModalOpen] = useState(false);
+ //state to track selected photo details
+ const [selectedPhoto, setSelectedPhoto] = useState(null);
 
  //function to toggle the modal
- const toggleModal = () => {
+ const toggleModal = (photo) => {
   console.log('toggle Modal')
+  setSelectedPhoto(photo)
   setIsModalOpen(prev => !prev);
+
+
+  
  }
 
   return (
@@ -43,7 +49,7 @@ const App = () => {
         toggleModal={toggleModal} />
 
         {isModalOpen && 
-        (<PhotoDetailsModal toggleModal={toggleModal} />)
+        (<PhotoDetailsModal photo={selectedPhoto} toggleModal={toggleModal} />)
         }
 
     </div>
