@@ -13,7 +13,7 @@ const PhotoListItem = ({ photo, toggleFavorite, isFavorited, toggleModal }) => {
   return (
    <div className="photo-list__item" onClick={() => {
     toggleModal(photo);
-    console.log(photo)
+    console.log(photo);
    }}>
 
 
