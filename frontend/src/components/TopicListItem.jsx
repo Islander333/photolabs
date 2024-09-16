@@ -4,13 +4,13 @@ import "../styles/TopicListItem.scss";
 
 
 
-const TopicListItem = (props) => {
+const TopicListItem = ({ topic, onClick }) => {
 
 
   
   return (
-    <div className="topic-list__item">
-      <span>{props.topic.title}</span>
+    <div className="topic-list__item" onClick={onClick}>
+      <span>{topic.title}</span>
     </div>
   );
 };

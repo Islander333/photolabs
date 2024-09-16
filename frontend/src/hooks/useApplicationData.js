@@ -8,7 +8,9 @@ const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   TOGGLE_MODAL: 'TOGGLE_MODAL',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
+  SET_SELECTED_TOPIC_ID: 'SET_SELECTED_TOPIC_ID'
 };
 
 // Reducer function to handle different actions
@@ -51,6 +53,18 @@ function reducer(state, action) {
             topicData: action.payload
           };
 
+          case ACTIONS.GET_PHOTOS_BY_TOPICS:
+            return {
+              ...state,
+              photoData: action.payload,
+            }
+
+            case ACTIONS.SET_SELECTED_TOPIC_ID:
+              return {
+                ...state,
+                selectedTopicId: action.payload
+              }
+
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -68,7 +82,8 @@ const useApplicationData = () => {
     selectedPhoto: null,
     similarPhotos: [],
     photoData: [],
-    topicData: []
+    topicData: [],
+    selectedTopicId: null
   };
 
  
@@ -89,6 +104,15 @@ const useApplicationData = () => {
       .then(response => response.json())
       .then((data) => dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data}))
     }, []);
+
+    //effect to get photos by topic
+    useEffect(() => {
+      if (state.selectedTopicId) {
+        fetch(`http://localhost:8001/api/topics/photos/${state.selectedTopicId}`)
+        .then(response => response.json())
+        .then((data) => dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data}))
+      }
+    }, [state.selectedTopicId])
 
 
  //function to toggle favorited photos (updated for reducer)
@@ -114,9 +138,16 @@ const useApplicationData = () => {
  };
 
 
+ //function to select topic
+ const selectTopic =  (topicId) => {
+  dispatch({ type: ACTIONS.SET_SELECTED_TOPIC_ID, payload: topicId })
+ }
+
+
  //returning the state/actions
   return {
     state,
+    selectTopic,
     toggleFavorite,
     toggleModal
   };

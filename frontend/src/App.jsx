@@ -16,6 +16,7 @@ const App = () => {
     state: { favoritedPhotos, isModalOpen, selectedPhoto, similarPhotos, photoData, topicData },
     toggleFavorite,
     toggleModal,
+    selectTopic
   } = useApplicationData();
 
 
@@ -27,7 +28,8 @@ const App = () => {
         topics={topicData}
         toggleFavorite={toggleFavorite}
         favoritedPhotos={favoritedPhotos}
-        toggleModal={toggleModal} />
+        toggleModal={toggleModal}
+        selectTopic={selectTopic} />
 
         {isModalOpen && 
         (<PhotoDetailsModal
