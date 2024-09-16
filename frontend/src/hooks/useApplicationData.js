@@ -1,12 +1,14 @@
 
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 // Define action types
 const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  TOGGLE_MODAL: 'TOGGLE_MODAL'
+  TOGGLE_MODAL: 'TOGGLE_MODAL',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
 };
 
 // Reducer function to handle different actions
@@ -37,6 +39,18 @@ function reducer(state, action) {
         isModalOpen: !state.isModalOpen
       };
 
+      case ACTIONS.SET_PHOTO_DATA:
+        return {
+          ...state,
+          photoData: action.payload
+        };
+
+        case ACTIONS.SET_TOPIC_DATA:
+          return {
+            ...state,
+            topicData: action.payload
+          };
+
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -52,11 +66,29 @@ const useApplicationData = () => {
     favoritedPhotos: [],
     isModalOpen: false,
     selectedPhoto: null,
-    similarPhotos: []
+    similarPhotos: [],
+    photoData: [],
+    topicData: []
   };
 
+ 
   //replaced all useState with useReducer
   const [state, dispatch] = useReducer(reducer, initialState)
+
+   //effect to make get request to /api/photos and console.log the response
+   useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+    .then(response => response.json())
+    .then((data) => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data}))
+    .catch(error => {console.error('Error fetching photos:', error)})
+  }, []);
+
+    //effect to make get request to /api/topics
+    useEffect(() => {
+      fetch('http://localhost:8001/api/topics')
+      .then(response => response.json())
+      .then((data) => dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data}))
+    }, []);
 
 
  //function to toggle favorited photos (updated for reducer)
