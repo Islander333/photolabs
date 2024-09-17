@@ -6,19 +6,21 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 
+
 const App = () => {
 
   //Destructuring state and functions from custom hook
   const {
-    state: { favoritedPhotos, isModalOpen, selectedPhoto, similarPhotos, photoData, topicData },
+    state: { favoritedPhotos, isModalOpen, selectedPhoto, similarPhotos, photoData, topicData, isDarkMode },
     toggleFavorite,
     toggleModal,
-    selectTopic
+    selectTopic,
+    toggleDarkMode
   } = useApplicationData();
 
 
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
 
       <HomeRoute
        photos={photoData}
@@ -26,7 +28,11 @@ const App = () => {
         toggleFavorite={toggleFavorite}
         favoritedPhotos={favoritedPhotos}
         toggleModal={toggleModal}
-        selectTopic={selectTopic} />
+        selectTopic={selectTopic}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        />
+        
 
         {/* Conditional rendering for if the Photo modal is open */}
         {isModalOpen && 

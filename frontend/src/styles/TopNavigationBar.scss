@@ -18,3 +18,22 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.dark-mode .top-nav-bar__logo {
+  color: white;
+}
+
+.dark-mode .dark-mode-toggle {
+  color: white;
+}
+
+.dark-mode .top-nav-bar {
+  box-shadow: 0 4px 6px -6px #000;
+}

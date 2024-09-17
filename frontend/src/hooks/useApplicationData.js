@@ -10,7 +10,8 @@ const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
-  SET_SELECTED_TOPIC_ID: 'SET_SELECTED_TOPIC_ID'
+  SET_SELECTED_TOPIC_ID: 'SET_SELECTED_TOPIC_ID',
+  TOGGLE_DARK_MODE: 'TOGGLE_DARK_MODE'
 };
 
 // Reducer function to handle different states with actions
@@ -65,6 +66,12 @@ function reducer(state, action) {
                 selectedTopicId: action.payload
               }
 
+              case ACTIONS.TOGGLE_DARK_MODE:
+                return {
+                  ...state,
+                  isDarkMode: !state.isDarkMode
+                }
+
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -83,7 +90,8 @@ const useApplicationData = () => {
     similarPhotos: [],
     photoData: [],
     topicData: [],
-    selectedTopicId: null
+    selectedTopicId: null,
+    isDarkMode: false
   };
 
  
@@ -143,13 +151,20 @@ const useApplicationData = () => {
   dispatch({ type: ACTIONS.SET_SELECTED_TOPIC_ID, payload: topicId })
  }
 
+ 
+ //function to toggle dark mode
+ const toggleDarkMode = () => {
+  dispatch({ type: ACTIONS.TOGGLE_DARK_MODE });
+ };
+
 
  //returning the state/actions
   return {
     state,
     selectTopic,
     toggleFavorite,
-    toggleModal
+    toggleModal,
+    toggleDarkMode
   };
   
 }
