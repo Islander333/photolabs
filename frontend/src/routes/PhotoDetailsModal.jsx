@@ -2,19 +2,11 @@ import React, { useEffect } from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
-import PhotoListItem from 'components/PhotoListItem';
 import PhotoFavButton from 'components/PhotoFavButton';
 
+//photo Details modal (modal for when a photo is clicked on)
 const PhotoDetailsModal = ({ photo, toggleModal, similarPhotos, favoritedPhotos, toggleFavorite }) => {
-  //log photo details when modal opens
-  useEffect(() => {
-    if (photo) {
-      console.log('photo:', photo);
-      console.log('similar photos:', similarPhotos)
-      console.log('favorited photos:', favoritedPhotos)
-    }
-  }, [photo, similarPhotos]);
-
+ 
   return (
     <div className="photo-details-modal">
 
@@ -48,8 +40,6 @@ const PhotoDetailsModal = ({ photo, toggleModal, similarPhotos, favoritedPhotos,
   </div> 
 
   
-      
-
       {/* Similar Photos */}
       <div className='photo-details-modal__header'>Similar Photos</div>
 

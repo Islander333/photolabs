@@ -5,11 +5,9 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-
+//component for individual photo items
 const PhotoListItem = ({ photo, toggleFavorite, isFavorited, toggleModal }) => {
   
-  
-
   return (
    <div className="photo-list__item" onClick={() => {
     toggleModal(photo);

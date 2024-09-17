@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from 'components/HomeRoute';
-
-/*import photos from 'mocks/photos';
-import topics from 'mocks/topics';*/
-
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+//removed mocks and fetched real API data from useApplicationData
 import useApplicationData from 'hooks/useApplicationData';
-
 
 
 const App = () => {
 
+  //Destructuring state and functions from custom hook
   const {
     state: { favoritedPhotos, isModalOpen, selectedPhoto, similarPhotos, photoData, topicData },
     toggleFavorite,
@@ -31,6 +28,7 @@ const App = () => {
         toggleModal={toggleModal}
         selectTopic={selectTopic} />
 
+        {/* Conditional rendering for if the Photo modal is open */}
         {isModalOpen && 
         (<PhotoDetailsModal
            photo={selectedPhoto}

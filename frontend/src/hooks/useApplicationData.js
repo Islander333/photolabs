@@ -1,7 +1,7 @@
 
 import { useReducer, useEffect } from 'react';
 
-// Define action types
+// Defined action types
 const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -13,7 +13,7 @@ const ACTIONS = {
   SET_SELECTED_TOPIC_ID: 'SET_SELECTED_TOPIC_ID'
 };
 
-// Reducer function to handle different actions
+// Reducer function to handle different states with actions
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -75,7 +75,7 @@ function reducer(state, action) {
 
 const useApplicationData = () => {
 
-  //object to hold the initial values of state variables
+  //initial state values
   const initialState = {
     favoritedPhotos: [],
     isModalOpen: false,
@@ -90,7 +90,7 @@ const useApplicationData = () => {
   //replaced all useState with useReducer
   const [state, dispatch] = useReducer(reducer, initialState)
 
-   //effect to make get request to /api/photos and console.log the response
+   //effect to make get request to /api/photos
    useEffect(() => {
     fetch('http://localhost:8001/api/photos')
     .then(response => response.json())
@@ -138,7 +138,7 @@ const useApplicationData = () => {
  };
 
 
- //function to select topic
+ //function to select the topic
  const selectTopic =  (topicId) => {
   dispatch({ type: ACTIONS.SET_SELECTED_TOPIC_ID, payload: topicId })
  }

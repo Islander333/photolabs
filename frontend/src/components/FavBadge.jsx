@@ -3,6 +3,7 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
+//passed favoritedCount to display the number of favorited items
 const FavBadge = ({ favoritedCount }) => {
   return (
     <div className='fav-badge'>
